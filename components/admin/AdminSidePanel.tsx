@@ -1,15 +1,24 @@
 "use client";
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import { Home, Users,User, Menu, CalendarDays, X } from "lucide-react";
 
 import Link from "next/link";
 
 const AdminSidePanel = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [role, setRole] = useState<string | null>(null);
 
   const toggleSidebar = () => {
     setIsOpen(!isOpen);
   };
+    
+  
+    useEffect(() => {
+      // Get role from local storage
+      const storedRole = localStorage.getItem("role");
+      setRole(storedRole);
+    }, []);
+  
 
   return (
     <>
@@ -57,6 +66,15 @@ const AdminSidePanel = () => {
               
               </Link>
             </li>
+            {/* Admin-only routes */}
+            {role === "admin" && (
+              <li className="group">
+                <Link href="/youthvoice/dashboard/admin/volunteer" className="flex items-center p-4 text-white hover:bg-gray-700">
+                  <Users className="w-5 h-5 mr-3" />
+                  volunteer
+                </Link>
+              </li> 
+            )}
           </ul>
           <ul>
             <li className="group">

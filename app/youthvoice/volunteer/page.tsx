@@ -10,7 +10,10 @@ const VolunteerSignup: React.FC = () => {
   const [age,setAge]=useState<string>()
   const [tshirtSize, setTshirtSize]=useState<string>()
   const [amount, setAmount]=useState<number>(400)
-  const [food, setFood]=useState<string>()
+  const [religion, setReligion]=useState<string>()
+  const [adress, setAdress]=useState<string>()
+  const [bloodgrp, setBloodgrp]=useState<string>()  
+  const [institution, setInstitution]=useState<string>()
   const [error, setError] = useState<string>('');
   const [loading,setLoading]=useState<boolean>(false)
 
@@ -23,7 +26,7 @@ const VolunteerSignup: React.FC = () => {
       setLoading(true)
       const response=await axios.post(`${API}/api/vol/payment/create/`,{
 
-        name,email,phone,age,food,"tshirt_size":tshirtSize,amount
+        name,email,phone,age,religion,"tshirt_size":tshirtSize,amount,adress,bloodgrp,institution
       })
       if(response.status==200){
         const res=response.data
@@ -103,25 +106,51 @@ const VolunteerSignup: React.FC = () => {
               className="w-full p-2 bg-gray-700 text-white border rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <option value="">Select Size</option>
+              <option value="XS">XS</option>
               <option value="S">S</option>
               <option value="M">M</option>
               <option value="L">L</option>
               <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+              <option value="XXXL">XXXL</option>
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-white mb-1" htmlFor="Food">Food Type</label>
+            <label className="block text-white mb-1" htmlFor="bloodgrp">T-shirt Size</label>
             <select
-              name="Food"
-              id="food"
-              value={food}
-              onChange={(e)=>{setFood(e.target.value)}}
+              name="bloodgrp"
+              id="bloodgrp"
+              value={tshirtSize}
+              onChange={(e)=>{setBloodgrp(e.target.value)}}
               required
               className="w-full p-2 bg-gray-700 text-white border rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
-              <option value="">Select Food TYPE</option>
-              <option value="veg">Vegetarian</option>
-              <option value="non-veg">Non-Vegetarian</option>
+              <option value="">Select Blood GROUP</option>
+              <option value="A+">A+</option>
+              <option value="A-">A-</option>
+              <option value="B+">B+</option>
+              <option value="B-">B-</option>
+              <option value="O+">O+</option>
+              <option value="O-">O-</option>
+              <option value="AB+">AB+</option>
+              <option value="AB-">AB-</option>
+            </select>
+          </div>
+          <div className="mb-4">
+            <label className="block text-white mb-1" htmlFor="religion">religion Type</label>
+            <select
+              name="religion"
+              id="religion"
+              value={religion}
+              onChange={(e)=>{setReligion(e.target.value)}}
+              required
+              className="w-full p-2 bg-gray-700 text-white border rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            >
+              <option value="">Select religion TYPE</option>
+              <option value="islamic">ISLAMIC</option>  
+              <option value="christian">CHRISTIAN</option>
+              <option value="hindu">HINDU</option>
+              <option value="buddhist">BUDDHIST</option>               
             </select>
           </div>
           <p className='text-white font-bold my-1'>Fee 400TK</p>

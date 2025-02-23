@@ -110,7 +110,7 @@ const Profile: React.FC = () => {
           <>
             <div className="relative inline-block">
               <img
-                src={`https://drive.google.com/thumbnail?id=${data.profile_pic}&sz=w500?authuser=0`}
+                src={`https://lh3.googleusercontent.com/d/${data.profile_pic}=w500`}
                 alt={data.member_name}
                 className="w-32 h-32 rounded-full object-cover border border-gray-300"
               />
