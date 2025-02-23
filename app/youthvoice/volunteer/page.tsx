@@ -9,7 +9,7 @@ const VolunteerSignup: React.FC = () => {
   const [phone,setPhone]=useState<string>()
   const [age,setAge]=useState<string>()
   const [tshirtSize, setTshirtSize]=useState<string>()
-  const [amount, setAmount]=useState<number>(400)
+  const [amount, setAmount]=useState<number>(2)
   const [religion, setReligion]=useState<string>()
   const [adress, setAdress]=useState<string>()
   const [bloodgrp, setBloodgrp]=useState<string>()  
