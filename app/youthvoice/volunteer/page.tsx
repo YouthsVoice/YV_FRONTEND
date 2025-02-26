@@ -9,9 +9,9 @@ const VolunteerSignup: React.FC = () => {
   const [phone,setPhone]=useState<string>()
   const [age,setAge]=useState<string>()
   const [tshirtSize, setTshirtSize]=useState<string>()
-  const [amount, setAmount]=useState<number>(2)
+  const [amount, setAmount]=useState<number>(1)
   const [religion, setReligion]=useState<string>()
-  const [adress, setAdress]=useState<string>()
+  const [address, setAdress]=useState<string>()
   const [bloodgrp, setBloodgrp]=useState<string>()  
   const [institution, setInstitution]=useState<string>()
   const [error, setError] = useState<string>('');
@@ -26,7 +26,7 @@ const VolunteerSignup: React.FC = () => {
       setLoading(true)
       const response=await axios.post(`${API}/api/vol/payment/create/`,{
 
-        name,email,phone,age,religion,"tshirt_size":tshirtSize,amount,adress,bloodgrp,institution
+        name,email,phone,age,religion,"tshirt_size":tshirtSize,amount,address,bloodgrp,institution
       })
       if(response.status==200){
         const res=response.data
@@ -84,6 +84,30 @@ const VolunteerSignup: React.FC = () => {
             />
           </div>
           <div className="mb-4">
+            <label className="block text-white mb-1" htmlFor="institution">Institution</label>
+            <input
+              type="text"
+              name="institution"
+              id="institution"
+              value={institution}
+              onChange={(e)=>{setInstitution(e.target.value)}}
+              required
+              className="w-full p-2 border bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            />
+          </div>
+          <div className="mb-4">
+            <label className="block text-white mb-1" htmlFor="address">Address</label>
+            <input
+              type="text"
+              name="address"
+              id="address"
+              value={address}
+              onChange={(e)=>{setAdress(e.target.value)}}
+              required
+              className="w-full p-2 border bg-gray-700 text-white rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
+            />
+          </div>
+          <div className="mb-4">
             <label className="block text-white mb-1" htmlFor="age">Age</label>
             <input
               type="number"
@@ -116,11 +140,11 @@ const VolunteerSignup: React.FC = () => {
             </select>
           </div>
           <div className="mb-4">
-            <label className="block text-white mb-1" htmlFor="bloodgrp">T-shirt Size</label>
+            <label className="block text-white mb-1" htmlFor="bloodgrp">Blood group</label>
             <select
               name="bloodgrp"
               id="bloodgrp"
-              value={tshirtSize}
+              value={bloodgrp}
               onChange={(e)=>{setBloodgrp(e.target.value)}}
               required
               className="w-full p-2 bg-gray-700 text-white border rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
