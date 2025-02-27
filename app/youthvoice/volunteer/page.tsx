@@ -178,6 +178,7 @@ const VolunteerSignup: React.FC = () => {
             </select>
           </div>
           <p className='text-white font-bold my-1'>Fee 400TK</p>
+          <p className=' text-white font-bold my-1'>Kindly wait some times it takes some time to load</p>
           <button
             type="submit"
             className="w-full p-2 bg-cyan-500 text-white rounded hover:bg-cyan-600 focus:outline-none focus:ring-2 focus:ring-cyan-500"
