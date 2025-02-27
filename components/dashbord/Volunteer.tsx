@@ -83,7 +83,7 @@ const Volunteer = () => {
                 >
                   <div>
                     <p className="font-medium">{season.event_name}</p>
-                    <p className="text-sm text-gray-500">File ID: {season.file_id}</p>
+                    <a href={`https://docs.google.com/spreadsheets/d/${season.file_id}/edit?gid=0#gid=0`} className="text-sm text-gray-500">File</a>
                     <p
                       className={`text-sm font-semibold ${
                         season.intake_status ? "text-green-600" : "text-red-600"
