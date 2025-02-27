@@ -151,13 +151,13 @@ const VolunteerSignup: React.FC = () => {
             >
               <option value="">Select Blood GROUP</option>
               <option value="A+">A+</option>
-              <option value="A-">A-</option>
+              <option value="A ">A-</option>
               <option value="B+">B+</option>
-              <option value="B-">B-</option>
+              <option value="B ">B-</option>
               <option value="O+">O+</option>
-              <option value="O-">O-</option>
+              <option value="O ">O-</option>
               <option value="AB+">AB+</option>
-              <option value="AB-">AB-</option>
+              <option value="AB ">AB-</option>
             </select>
           </div>
           <div className="mb-4">
@@ -171,10 +171,10 @@ const VolunteerSignup: React.FC = () => {
               className="w-full p-2 bg-gray-700 text-white border rounded focus:outline-none focus:ring-2 focus:ring-cyan-500"
             >
               <option value="">Select religion TYPE</option>
-              <option value="islamic">ISLAMIC</option>  
-              <option value="christian">CHRISTIAN</option>
-              <option value="hindu">HINDU</option>
-              <option value="buddhist">BUDDHIST</option>               
+              <option value="islam">ISLAM</option>  
+              <option value="christianity">CHRISTIANITY</option>
+              <option value="hinduism">HINDUISM</option>
+              <option value="buddhism">BUDDHISM</option>               
             </select>
           </div>
           <p className='text-white font-bold my-1'>Fee 400TK</p>
