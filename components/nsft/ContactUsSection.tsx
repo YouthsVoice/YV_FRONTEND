@@ -51,13 +51,12 @@ const ContactUsSection = () => {
             1st Floor, adjacent Building to Salt & Sugar, 23/2, M.M Ali Road, Opposite of Shilpokola Academy, Chittagong, Bangladesh
           </p>
           <div className="h-64 w-full rounded-lg overflow-hidden">
-            <iframe
-              src="https://maps.app.goo.gl/Fw1DkqT21TGYYsiB7"
-              className="w-full h-full"
-              allowFullScreen={false}
-              loading="lazy"
-              aria-hidden="false"
-            ></iframe>
+          <iframe className=" border-0 " src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d3689.9981866980143!2d91.82270057502177!3d22.353697322874424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1s1st%20Floor%2C%20adjacent%20Building%20to%20Salt%20%26%20Sugar%2C%2023%2F2%2C%20M.M%20Ali%20Road%2C%20Opposite%20of%20Shilpokola%20Academy%2C%20%2C%20Chittagong%2C%20Bangladesh!5e0!3m2!1sen!2sbd!4v1740897915210!5m2!1sen!2sbd" width="600" height="450"  
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
           </div>
         </div>
       </div>

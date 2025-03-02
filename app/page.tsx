@@ -6,6 +6,7 @@ import Header from "@/components/Header";
 import SignatureEvents from "../components/nsft/SignatureEvents";
 import Footer from "@/components/Footer";
 import ContactUsSection from "@/components/nsft/ContactUsSection";
+import PCPHome from "@/components/nsft/PCPHome";
 export default function Home() {
 
   //  
@@ -24,15 +25,23 @@ export default function Home() {
 
          */}
 
+         const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
-
+         // Define months for conditional rendering
+         const showPCPHOME = ["February", "March"].includes(currentMonth);
+         const showFAWSection = ["October", "November", "December", "January"].includes(currentMonth);
   return (
     <>
     <Header/>
       <main className="max-w-screen mx-auto">
         <Hero/>
+              {/* Conditionally render PCPHOME or FAWSection */}
+      {showPCPHOME && <PCPHome/>}
+      {showFAWSection && <FAWSection />}
         <NSFTSection />  
-        <FAWSection />
+        
+
+
         <Warmth />
         <SignatureEvents />
         <ContactUsSection />
