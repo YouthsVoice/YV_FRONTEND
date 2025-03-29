@@ -123,9 +123,9 @@ const Header = () => {
               </motion.a>
             )}
             <motion.a
-              href="/donate"
+              href="/donation"
               className={`bg-cyan-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors ${
-                router === '/donate' ? 'bg-cyan-900 font-bold' : ''
+                router === '/donation' ? 'bg-cyan-900 font-bold' : ''
               }`}
               whileHover={{ scale: 1.1 }}
             >
@@ -176,9 +176,9 @@ const Header = () => {
                 </motion.a>
               )}
               <motion.a
-                href="/donate"
+                href="/donation"
                 className={`bg-cyan-500 text-white font-bold px-4 py-2 rounded-lg hover:bg-cyan-600 transition-colors ${
-                  router === '/donate' ? 'bg-cyan-900 font-bold' : ''
+                  router === '/donation' ? 'bg-cyan-900 font-bold' : ''
                 }`}
                 whileHover={{ scale: 1.1 }}
               >
