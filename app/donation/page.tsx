@@ -17,8 +17,9 @@ export default function DonationPage() {
     const [step, setStep] = useState(0);
     const [submitted, setSubmitted] = useState(false);
   
-    const onSubmit = (data: any) => {
-      console.log(data);
+    const onSubmit = () => {
+      console.log(submitted);
+      
       setSubmitted(true);
     };
   
