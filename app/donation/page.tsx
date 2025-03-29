@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 
 const steps = [
   { id: "name", label: "Full Name", type: "text", image: "/D-02.webp" },
@@ -76,16 +77,20 @@ export default function DonationPage() {
           </motion.div>
   
           {/* Right Section: Background Image and Floating Effect */}
-          <motion.div
-            className="w-full sm:w-1/2 h-full bg-cover bg-center rounded-2xl z-0"
-            style={{
-              backgroundImage: `url(${steps[step].image})`,
-              backgroundPosition: "center",
-              backgroundSize: "cover",
-            }}
-          >
-            <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div>
-          </motion.div>
+          <motion.div className="w-full sm:w-1/2 h-full relative rounded-2xl z-0">
+  <div className="absolute inset-0">
+    <Image
+      src={steps[step].image}
+      alt={steps[step].label}
+      layout="fill" // Makes the image cover the entire div
+      objectFit="cover" // Ensures the image covers the container properly
+      objectPosition="center" // Centers the image
+      quality={75} // Adjusts the image quality for faster loading
+      priority // Prioritize this image if it's above the fold
+    />
+  </div>
+  <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div>
+</motion.div>
         </motion.div>
       </div>
     );
