@@ -27,7 +27,7 @@ export default function DonationPage() {
     };
   
     return (
-      <div className="min-h-screen bg-gradient-to-b from-cyan-600 to-blue-800 text-white flex justify-center items-center relative overflow-hidden">
+      <div className="min-h-screen bg-gradient-to-b from-red-500 via-orange-500 to-pink-500 text-white flex justify-center items-center relative overflow-hidden">
         {/* Scrollable Sections */}
         <motion.div
           key={step}
