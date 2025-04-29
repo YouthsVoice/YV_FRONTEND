@@ -7,6 +7,7 @@ import SignatureEvents from "../components/nsft/SignatureEvents";
 import Footer from "@/components/Footer";
 import ContactUsSection from "@/components/nsft/ContactUsSection";
 import PCPHome from "@/components/nsft/PCPHome";
+import MHMSection from "@/components/nsft/MHMSection";
 export default function Home() {
 
   //  
@@ -36,6 +37,8 @@ export default function Home() {
       <main className="max-w-screen mx-auto">
         <Hero/>
               {/* Conditionally render PCPHOME or FAWSection */}
+              <MHMSection/>
+      
       {showPCPHOME && <PCPHome/>}
       {showFAWSection && <FAWSection />}
         <NSFTSection />  
