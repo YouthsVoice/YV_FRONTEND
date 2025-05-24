@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ContactUsSection from "@/components/nsft/ContactUsSection";
 import PCPHome from "@/components/nsft/PCPHome";
 import MHMSection from "@/components/nsft/MHMSection";
+import Form from "@/components/nsft/Form";
 export default function Home() {
 
   //  
@@ -38,6 +39,7 @@ export default function Home() {
         <Hero/>
               {/* Conditionally render PCPHOME or FAWSection */}
               <MHMSection/>
+              <Form/>
       
       {showPCPHOME && <PCPHome/>}
       {showFAWSection && <FAWSection />}
