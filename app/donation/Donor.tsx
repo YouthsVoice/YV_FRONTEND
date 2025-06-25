@@ -51,7 +51,7 @@ const Donor = () => {
     </div>
     <div className='flex items-center flex-col justify-center gap-3'>
         <FormControl fullWidth className='gap-2' sx={{ m: 2 }}>
-          <input className='w-[76vh]' type="number" value={ammount} onChange={(e:any)=>{setAmmount(e.target.value)}} min={100} placeholder='Ammount in BDT' />
+          <input className='w-[76vh]' type="number" value={ammount} onChange={(e)=>{setAmmount(JSON.parse(e.target.value))}} min={100} placeholder='Ammount in BDT' />
           
         </FormControl>
         <div className=' gap-3 w-[78vh] flex items-center justify-between'>
