@@ -9,12 +9,12 @@ import Button from '@mui/material/Button';
 
 
 const Donor = () => {
-    const [type, setType] = useState<string>('');
+    const [Ttype, setType] = useState<string>('');
     const [name,setName]= useState<string>('')
-    const [Email,setEmail]= useState<string>('')
-    const [Phone,setPhone]= useState<integer>()
+    const [email,setEmail]= useState<string>('')
+    const [phone,setPhone]= useState<integer>()
     const [ammount,setAmmount]= useState<integer>()
-    console.log(name,Email,Phone)
+    console.log(name,email,phone)
 
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -36,12 +36,12 @@ const Donor = () => {
         <Select className='w-[78vh]'
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={type}
+          value={Ttype}
           onChange={handleChange}
           autoWidth
           label="Type"
         >
-          <MenuItem value={type}>
+          <MenuItem value={Ttype}>
             <em>None</em>
           </MenuItem>
           <MenuItem onChange={()=>{setType("Monthly")}} value="Monthly">Monthly</MenuItem>
