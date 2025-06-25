@@ -1,3 +1,4 @@
+'use client'
 import React, { useState } from 'react'
 import Grid from '@mui/material/Grid';
 import TextField from '@mui/material/TextField';
@@ -12,8 +13,8 @@ const Donor = () => {
     const [dtype, setDType] = useState<string>('')
     const [name,setName]= useState<string>('')
     const [email,setEmail]= useState<string>('')
-    const [phone,setPhone]= useState<integer>()
-    const [ammount,setAmmount]= useState<integer>()
+ const [phone, setPhone] = useState<number>()
+const [ammount, setAmmount] = useState<number>()
     console.log(name,email,phone)
 
 
@@ -29,7 +30,7 @@ const Donor = () => {
     <form className=' w-[80vh] bg-blend-saturation bg-gray-100/70 px-5 py-5 rounded-lg flex items-center justify-center gap-3 flex-col'>
         <TextField className='w-[78vh]' onChange={(e)=>{setName(e.target.value)}} id="filled-basic" label="Name" variant="filled" />
         <TextField className='w-[78vh]' onChange={(e)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" />
-        <TextField className='w-[78vh]' onChange={(e)=>{setPhone(JSON.parse(e.target.value))}} id="filled-basic" type='number' label="Phone" variant="filled" />
+        <TextField className='w-[78vh]' onChange={(e) => setPhone(parseInt(e.target.value))}id="filled-basic" type='number' label="Phone" variant="filled" />
          <div>
       <FormControl sx={{ m: 1, minWidth: 80 }}>
         <InputLabel  id="demo-simple-select-autowidth-label">Type</InputLabel>
@@ -51,7 +52,7 @@ const Donor = () => {
     </div>
     <div className='flex items-center flex-col justify-center gap-3'>
         <FormControl fullWidth className='gap-2' sx={{ m: 2 }}>
-          <input className='w-[76vh]' type="number" value={ammount} onChange={(e)=>{setAmmount(JSON.parse(e.target.value))}} min={100} placeholder='Ammount in BDT' />
+          <input className='w-[76vh]' type="number" value={ammount} onChange={(e) => setAmmount(parseInt(e.target.value))} min={100} placeholder='Ammount in BDT' />
           
         </FormControl>
         <div className=' gap-3 w-[78vh] flex items-center justify-between'>
