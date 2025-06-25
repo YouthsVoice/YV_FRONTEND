@@ -12,8 +12,8 @@ const Donor = () => {
     const [type, setType] = useState<string>('');
     const [name,setName]= useState<string>('')
     const [Email,setEmail]= useState<string>('')
-    const [Phone,setPhone]= useState<number>()
-    const [ammount,setAmmount]= useState<number>()
+    const [Phone,setPhone]= useState<integer>()
+    const [ammount,setAmmount]= useState<integer>()
     console.log(name,Email,Phone)
 
 
@@ -27,9 +27,9 @@ const Donor = () => {
 <Grid  container spacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} columns={{ xs: 1, sm: 1, md: 2 }}>
  <Grid size="auto">
     <form className=' w-[80vh] bg-blend-saturation bg-gray-100/70 px-5 py-5 rounded-lg flex items-center justify-center gap-3 flex-col'>
-        <TextField className='w-[78vh]' onChange={(e:any)=>{setName(e.target.value)}} id="filled-basic" label="Name" variant="filled" />
-        <TextField className='w-[78vh]' onChange={(e:any)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" />
-        <TextField className='w-[78vh]' onChange={(e:any)=>{setPhone(e.target.value)}} id="filled-basic" type='number' label="Phone" variant="filled" />
+        <TextField className='w-[78vh]' onChange={(e)=>{setName(e.target.value)}} id="filled-basic" label="Name" variant="filled" />
+        <TextField className='w-[78vh]' onChange={(e)=>{setEmail(e.target.value)}} id="filled-basic" label="Email" variant="filled" />
+        <TextField className='w-[78vh]' onChange={(e)=>{setPhone(JSON.parse(e.target.value))}} id="filled-basic" type='number' label="Phone" variant="filled" />
          <div>
       <FormControl sx={{ m: 1, minWidth: 80 }}>
         <InputLabel  id="demo-simple-select-autowidth-label">Type</InputLabel>
