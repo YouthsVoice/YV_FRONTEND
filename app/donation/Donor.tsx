@@ -5,8 +5,6 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-import InputAdornment from '@mui/material/InputAdornment';
-import OutlinedInput from '@mui/material/OutlinedInput';
 import Button from '@mui/material/Button';
 
 
@@ -46,8 +44,8 @@ const Donor = () => {
           <MenuItem value={type}>
             <em>None</em>
           </MenuItem>
-          <MenuItem onChange={(e)=>{setType("Monthly")}} value="Monthly">Monthly</MenuItem>
-          <MenuItem onChange={(e)=>{setType("Weekly")}} value="Weekly">Weekly</MenuItem>
+          <MenuItem onChange={()=>{setType("Monthly")}} value="Monthly">Monthly</MenuItem>
+          <MenuItem onChange={()=>{setType("Weekly")}} value="Weekly">Weekly</MenuItem>
         </Select>
       </FormControl>
     </div>
@@ -57,9 +55,9 @@ const Donor = () => {
           
         </FormControl>
         <div className=' gap-3 w-[78vh] flex items-center justify-between'>
-             <Button className='w-[24vh]' onClick={(e:any)=>{setAmmount(100)}} variant="outlined">100</Button>
-             <Button className='w-[24vh]' onClick={(e:any)=>{setAmmount(200)}} variant="outlined">200</Button>
-             <Button  className='w-[24vh]' onClick={(e:any)=>{setAmmount(500)}} variant="outlined">500</Button>
+             <Button className='w-[24vh]' onClick={()=>{setAmmount(100)}} variant="outlined">100</Button>
+             <Button className='w-[24vh]' onClick={()=>{setAmmount(200)}} variant="outlined">200</Button>
+             <Button  className='w-[24vh]' onClick={()=>{setAmmount(500)}} variant="outlined">500</Button>
 
         </div>
         <Button className='w-[54vh]' color='secondary' variant="outlined">SUBMIT</Button>
