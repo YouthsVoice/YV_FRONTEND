@@ -16,6 +16,7 @@ const Donor = () => {
     const [Email,setEmail]= useState<string>('')
     const [Phone,setPhone]= useState<number>()
     const [ammount,setAmmount]= useState<number>()
+    console.log(name,Email,Phone)
 
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -23,7 +24,7 @@ const Donor = () => {
   };
 
   return (
-    <div classname="px-4 py-4">
+    <div className="px-4 py-4">
       
 <Grid  container spacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }} columns={{ xs: 1, sm: 1, md: 2 }}>
  <Grid size="auto">
