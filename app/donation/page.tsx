@@ -8,7 +8,7 @@ import TabPanel from '@mui/lab/TabPanel';
 import DonationPage from '@/components/donation/DonationPage';
 import Donor from '@/components/donation/Donor';
 
-const page = () => {
+const Page = () => {
     const [value, setValue] = useState('1');
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
@@ -31,4 +31,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page
