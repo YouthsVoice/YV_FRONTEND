@@ -1,97 +1,34 @@
-"use client"
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { useForm } from "react-hook-form";
-import Image from "next/image";
+'use client'; // if using app directory in Next.js
+import { useState} from 'react'
+import Box from '@mui/material/Box';
+import Tab from '@mui/material/Tab';
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import DonationPage from './DonationPage';
+import Donor from './Donor';
 
-const steps = [
-  { id: "name", label: "Full Name", type: "text", image: "/D-02.webp" },
-  { id: "phone", label: "Phone Number", type: "tel", image: "/D-01.webp" },
-  { id: "email", label: "Email", type: "email", image: "/D-03.webp" },
-  { id: "event", label: "Select Event", type: "select", options: ["PCP", "FAW", "MHM", "MAYA"], image: "/D-04.webp" },
-  { id: "amount", label: "Amount (TK)", type: "number", image: "/D-05.webp" },
-];
+const page = () => {
+    const [value, setValue] = useState('1');
 
+  const handleChange = (event: React.SyntheticEvent, newValue: string) => {
+    setValue(newValue);
+  };
 
-export default function DonationPage() {
-    const { register, handleSubmit } = useForm();
-    const [step, setStep] = useState(0);
-    const [submitted, setSubmitted] = useState(false);
-  
-    const onSubmit = () => {
-      console.log(submitted);
-      
-      setSubmitted(true);
-    };
-  
-    const nextStep = () => {
-      if (step < steps.length - 1) setStep(step + 1);
-    };
-  
-    return (
-      <div className="min-h-screen bg-gradient-to-b from-red-500 via-orange-500 to-pink-500 text-white flex justify-center items-center relative overflow-hidden">
-        {/* Scrollable Sections */}
-        <motion.div
-          key={step}
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -50 }}
-          transition={{ duration: 0.8 }}
-          className={`w-full max-w-4xl h-screen flex justify-center items-center flex-col p-8 sm:flex-row gap-10 relative`}
-        >
-          {/* Left Section: Form */}
-          <motion.div
-            className="w-full sm:w-1/2 bg-white bg-opacity-80 backdrop-blur-lg p-8 rounded-2xl shadow-lg z-10 transform transition-all "
-          >
-            <h1 className="text-3xl font-bold text-cyan-500 mb-6">{steps[step].label}</h1>
-            <motion.form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              {steps[step].type === "select" ? (
-                <select
-                  {...register(steps[step].id)}
-                  required
-                  className="w-full p-4 bg-gray-200 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500"
-                >
-                  {steps[step].options?.map((option) => (
-                    <option key={option} value={option}>{option}</option>
-                  ))}
-                </select>
-              ) : (
-                <input
-                  {...register(steps[step].id)}
-                  type={steps[step].type}
-                  placeholder={steps[step].label}
-                  required
-                  className="w-full p-4 bg-gray-200 text-gray-900 border border-gray-300 rounded-lg focus:ring-2 focus:ring-cyan-500"
-                />
-              )}
-              {step < steps.length - 1 ? (
-                <button type="button" onClick={nextStep} className="w-full p-4 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition">
-                  Next
-                </button>
-              ) : (
-                <button type="submit" className="w-full p-4 bg-cyan-500 text-white rounded-lg hover:bg-cyan-600 transition">
-                  Donate Now
-                </button>
-              )}
-            </motion.form>
-          </motion.div>
-  
-          {/* Right Section: Background Image and Floating Effect */}
-          <motion.div className="w-full sm:w-1/2 h-full relative rounded-2xl z-0">
-  <div className="absolute inset-0">
-    <Image
-      src={steps[step].image}
-      alt={steps[step].label}
-      layout="fill" // Makes the image cover the entire div
-      objectFit="cover" // Ensures the image covers the container properly
-      objectPosition="center" // Centers the image
-      quality={75} // Adjusts the image quality for faster loading
-      priority // Prioritize this image if it's above the fold
-    />
-  </div>
-  <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div>
-</motion.div>
-        </motion.div>
-      </div>
-    );
-  }
+  return (
+<Box sx={{ width: '100%', typography: 'body1' }}>
+      <TabContext value={value}>
+        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+          <TabList onChange={handleChange} aria-label="lab API tabs example">
+            <Tab label="Normal donation" value="1" />
+            <Tab label="Donnor" value="2" />
+          </TabList>
+        </Box>
+        <TabPanel value="1"><DonationPage/></TabPanel>
+        <TabPanel value="2"><Donor/></TabPanel>
+      </TabContext>
+    </Box>
+  )
+}
+
+export default page

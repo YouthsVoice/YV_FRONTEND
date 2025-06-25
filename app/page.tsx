@@ -9,6 +9,7 @@ import ContactUsSection from "@/components/nsft/ContactUsSection";
 import PCPHome from "@/components/nsft/PCPHome";
 import MHMSection from "@/components/nsft/MHMSection";
 import Form from "@/components/nsft/Form";
+import GameAD from "@/components/nsft/GameAD";
 export default function Home() {
 
   //  
@@ -39,6 +40,7 @@ export default function Home() {
         <Hero/>
               {/* Conditionally render PCPHOME or FAWSection */}
               <MHMSection/>
+              <GameAD/>
               <Form/>
       
       {showPCPHOME && <PCPHome/>}
