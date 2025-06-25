@@ -9,7 +9,7 @@ import Button from '@mui/material/Button';
 
 
 const Donor = () => {
-    const [Ttype, setType] = useState<string>('');
+    const [dtype, setDType] = useState<string>('')
     const [name,setName]= useState<string>('')
     const [email,setEmail]= useState<string>('')
     const [phone,setPhone]= useState<integer>()
@@ -18,7 +18,7 @@ const Donor = () => {
 
 
   const handleChange = (event: SelectChangeEvent) => {
-    setType(event.target.value);
+    setDType(event.target.value);
   };
 
   return (
@@ -36,16 +36,16 @@ const Donor = () => {
         <Select className='w-[78vh]'
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
-          value={Ttype}
+          value={dtype}
           onChange={handleChange}
           autoWidth
           label="Type"
         >
-          <MenuItem value={Ttype}>
+          <MenuItem value={dtype}>
             <em>None</em>
           </MenuItem>
-          <MenuItem onChange={()=>{setType("Monthly")}} value="Monthly">Monthly</MenuItem>
-          <MenuItem onChange={()=>{setType("Weekly")}} value="Weekly">Weekly</MenuItem>
+          <MenuItem onChange={()=>{setDType("Monthly")}} value="Monthly">Monthly</MenuItem>
+          <MenuItem onChange={()=>{setDType("Weekly")}} value="Weekly">Weekly</MenuItem>
         </Select>
       </FormControl>
     </div>
