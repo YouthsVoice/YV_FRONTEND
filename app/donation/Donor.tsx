@@ -9,7 +9,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
 
 
-const Donor = () => {
+export default function Donor (){
     const [dtype, setDType] = useState<string>('')
     const [name,setName]= useState<string>('')
     const [email,setEmail]= useState<string>('')
@@ -74,4 +74,3 @@ const [ammount, setAmmount] = useState<number>()
   )
 }
 
-export default Donor
