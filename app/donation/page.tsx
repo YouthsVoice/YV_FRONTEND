@@ -5,8 +5,8 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import DonationPage from './DonationPage';
-import Donor from './Donor';
+import DonationPage from '@/components/donation/DonationPage';
+import Donor from '@/components/donation/Donor';
 
 const page = () => {
     const [value, setValue] = useState('1');
