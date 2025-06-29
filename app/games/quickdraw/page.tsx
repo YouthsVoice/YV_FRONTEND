@@ -7,12 +7,12 @@ export default function EmotionsGame() {
   const basketRef = useRef<HTMLDivElement>(null);
   const finalScoreRef = useRef<HTMLSpanElement>(null);
 
-  const [gameActive, setGameActive] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
-  const [score, setScore] = useState<number>(0);
-  const [misses, setMisses] = useState<number>(0);
+  const [gameActive, setGameActive] = useState(false);
+  const [showModal, setShowModal] = useState(false);
+  const [score, setScore] = useState(0);
+  const [misses, setMisses] = useState(0);
 
-  // Moved variables inside component and made them refs to persist between renders
+  // Game state with difficulty scaling
   const gameStateRef = useRef({
     baseFallSpeed: 4,
     baseSpawnInterval: 1200,
@@ -21,6 +21,11 @@ export default function EmotionsGame() {
     animationFrameId: 0,
     lastSpawn: 0,
     fallingItems: [] as { element: HTMLElement; y: number }[],
+    // Difficulty scaling factors
+    speedIncreaseFactor: 0.1, // How much speed increases per point
+    spawnRateIncreaseFactor: 10, // How much faster items spawn per point
+    maxFallSpeed: 10, // Maximum falling speed
+    minSpawnInterval: 500 // Minimum spawn interval
   });
 
   const officeIcons = [
@@ -82,6 +87,7 @@ export default function EmotionsGame() {
       const itemObj = gameStateRef.current.fallingItems[i];
       const item = itemObj.element;
 
+      // Update position with current speed
       itemObj.y += gameStateRef.current.currentFallSpeed;
       item.style.transform = `translateY(${itemObj.y}px)`;
 
@@ -93,12 +99,21 @@ export default function EmotionsGame() {
         itemRect.right >= basketRect.left &&
         itemRect.left <= basketRect.right
       ) {
-        setScore((s) => s + 1);
+        setScore((s) => {
+          const newScore = s + 1;
+          // Update speed and spawn interval based on new score
+          gameStateRef.current.currentFallSpeed = Math.min(
+            gameStateRef.current.baseFallSpeed + (newScore * gameStateRef.current.speedIncreaseFactor),
+            gameStateRef.current.maxFallSpeed
+          );
+          gameStateRef.current.currentSpawnInterval = Math.max(
+            gameStateRef.current.baseSpawnInterval - (newScore * gameStateRef.current.spawnRateIncreaseFactor),
+            gameStateRef.current.minSpawnInterval
+          );
+          return newScore;
+        });
         item.remove();
         gameStateRef.current.fallingItems.splice(i, 1);
-        // Update speed and spawn interval based on score
-        gameStateRef.current.currentFallSpeed = gameStateRef.current.baseFallSpeed + (score * 0.05);
-        gameStateRef.current.currentSpawnInterval = Math.max(300, gameStateRef.current.baseSpawnInterval - (score * 15));
         continue;
       }
 
@@ -135,7 +150,7 @@ export default function EmotionsGame() {
     setGameActive(true);
     setShowModal(false);
     
-    // Reset game state
+    // Reset game state with base difficulty
     gameStateRef.current.currentFallSpeed = gameStateRef.current.baseFallSpeed;
     gameStateRef.current.currentSpawnInterval = gameStateRef.current.baseSpawnInterval;
     gameStateRef.current.lastSpawn = performance.now();
