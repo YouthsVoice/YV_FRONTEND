@@ -7,10 +7,10 @@ export default function EmotionsGame() {
   const basketRef = useRef<HTMLDivElement>(null);
   const finalScoreRef = useRef<HTMLSpanElement>(null);
 
-  const [gameActive, setGameActive] = useState(false);
-  const [showModal, setShowModal] = useState(false);
-  const [score, setScore] = useState(0);
-  const [misses, setMisses] = useState(0);
+  const [gameActive, setGameActive] = useState<boolean>(false);
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [score, setScore] = useState<number>(0);
+  const [misses, setMisses] = useState<number>(0);
 
   // Moved variables inside component and made them refs to persist between renders
   const gameStateRef = useRef({
