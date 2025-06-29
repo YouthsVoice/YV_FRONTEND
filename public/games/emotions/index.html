@@ -3,149 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Template Dokan Game</title>
+  <title>Optimized Dokan Game</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.tailwindcss.com/3.4.16"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
   <style>
     html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
+      width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
     }
     body {
       font-family: 'Inter', sans-serif;
       background: linear-gradient(to right bottom, #add8e6, #87ceeb);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      color: #333;
-      user-select: none;
-      cursor: default;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      min-height: 100vh; color: #333; user-select: none; cursor: default;
     }
     .game-container {
-      position: relative;
-      width: 375px;
-      height: 650px;
+      position: relative; width: 375px; height: 650px;
       background-color: rgba(255, 255, 255, 0.9);
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      padding: 20px;
-      border: 5px solid #4CAF50;
+      border-radius: 20px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+      overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+      padding: 20px; border: 5px solid #4CAF50;
     }
-    .game-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-bottom: 10px;
-      border-bottom: 2px dashed #a0a0a0;
-      margin-bottom: 10px;
-    }
-    .game-stats {
-      font-size: 1.5rem;
-      font-weight: 700;
-      display: flex;
-      gap: 20px;
-    }
-    .game-area {
-      position: relative;
-      flex-grow: 1;
-      background-color: rgba(240, 248, 255, 0.7);
-      border-radius: 15px;
-      overflow: hidden;
-      border: 2px dashed red;
-      box-sizing: border-box;
-      width: 100%;
-      height: 100%;
-    }
-    .falling-item {
-      position: absolute;
-      width: 50px;
-      height: 50px;
-      border-radius: 10px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-      object-fit: contain;
-      z-index: 10;
-      user-select: none;
-    }
-    .basket {
-      position: absolute;
-      bottom: 0;
-      width: 80px;
-      height: 30px;
-      background-color: #FF9800;
-      border-radius: 10px 10px 0 0;
-      box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3);
-      z-index: 20;
-      border: 3px solid #e68a00;
-      user-select: none;
-    }
-    .button {
-      padding: 10px 20px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-      margin-top: 15px;
-    }
-    .start-button {
-      background: linear-gradient(to right, #4CAF50, #8BC34A);
-      color: white;
-    }
-    .start-button:hover {
-      background: linear-gradient(to right, #8BC34A, #4CAF50);
-      transform: translateY(-2px);
-    }
-    .game-over-modal {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.7);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-      border-radius: 20px;
-      flex-direction: column;
-      gap: 20px;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-    }
-    .game-over-modal.hidden {
-      display: none;
-    }
-    .game-over-content {
-      background-color: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-      color: #333;
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-    .restart-button {
-      background: linear-gradient(to right, #2196F3, #03A9F4);
-      color: white;
-    }
-    .restart-button:hover {
-      background: linear-gradient(to right, #03A9F4, #2196F3);
-      transform: translateY(-2px);
-    }
+    .game-header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 10px; border-bottom: 2px dashed #a0a0a0; margin-bottom: 10px; }
+    .game-stats { font-size: 1.5rem; font-weight: 700; display: flex; gap: 20px; }
+    .game-area { position: relative; flex-grow: 1; background-color: rgba(240, 248, 255, 0.7); border-radius: 15px; overflow: hidden; border: 2px dashed red; width: 100%; height: 100%; }
+    .falling-item { position: absolute; width: 50px; height: 50px; border-radius: 10px; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2); object-fit: contain; z-index: 10; user-select: none; will-change: transform; }
+    .basket { position: absolute; bottom: 0; width: 80px; height: 30px; background-color: #59a8f6; border-radius: 10px 10px 0 0; box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.3); z-index: 20; border: 3px solid #4797e6; user-select: none; }
+    .button { padding: 10px 20px; font-size: 1.2rem; font-weight: 700; border: none; border-radius: 10px; cursor: pointer; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); margin-top: 15px; }
+    .start-button { background: linear-gradient(to right, #4CAF50, #59a8f6); color: white; }
+    .start-button:hover { background: linear-gradient(to right, #8BC34A, #4797e6); transform: translateY(-2px); }
+    .game-over-modal { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.7); display: flex; justify-content: center; align-items: center; z-index: 100; border-radius: 20px; flex-direction: column; gap: 20px; color: white; text-align: center; padding: 20px; box-sizing: border-box; }
+    .game-over-modal.hidden { display: none; }
+    .game-over-content { background-color: white; padding: 30px; border-radius: 15px; box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4); color: #333; font-size: 1.8rem; font-weight: 700; }
+    .restart-button { background: linear-gradient(to right, #2196F3, #03A9F4); color: white; }
+    .restart-button:hover { background: linear-gradient(to right, #03A9F4, #2196F3); transform: translateY(-2px); }
   </style>
 </head>
 <body>
@@ -157,11 +48,9 @@
       </div>
       <button id="startButton" class="button start-button">Start Game</button>
     </div>
-
     <div class="game-area" id="gameArea">
       <div id="basket" class="basket"></div>
     </div>
-
     <div id="gameOverModal" class="game-over-modal hidden">
       <div class="game-over-content">
         <h2>Game Over!</h2>
@@ -170,8 +59,6 @@
       </div>
     </div>
   </div>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
   <script>
     const gameArea = document.getElementById('gameArea');
     const basket = document.getElementById('basket');
@@ -182,183 +69,77 @@
     const finalScoreDisplay = document.getElementById('finalScore');
     const restartButton = document.getElementById('restartButton');
 
-    let score = 0;
-    let misses = 0;
-    const maxMisses = 3;
-    let gameActive = false;
-    let animationFrameId;
-    let itemSpawnIntervalId;
-    let fallingItems = [];
+    let score = 0, misses = 0, gameActive = false;
+    let baseFallSpeed = 4, currentFallSpeed = baseFallSpeed;
+    let baseSpawnInterval = 1200, currentSpawnInterval = baseSpawnInterval;
+    let fallingItems = [], animationFrameId;
+    let basketRect, gameAreaBounds;
+    let lastSpawn = performance.now();
 
-    let baseFallSpeed = 4; // starting speed a bit faster
-    let currentFallSpeed = baseFallSpeed;
-    let baseSpawnInterval = 1200; // faster spawn interval
-    let currentSpawnInterval = baseSpawnInterval;
+    const officeIcons = ["./04.webp", "./logo1.webp", "./logo2.webp", "./03.webp"];
 
-    // Replace these URLs with your own image sources
-    const officeIcons = [
-      {
-        src: "./04.png",
-        alt: "PowerPoint Icon"
-      },
-      {
-        src: "./logo1.png",
-        alt: "Excel Icon"
-      },
-      {
-        src: "./logo2.png",
-        alt: "Google Slides Icon"
-      },
-      {
-        src: "./03.png",
-        alt: "CV Icon"
-      }
-    ];
-
-    let catchSynth, missSynth;
-
-    // Background music variables
-    let bgMusicPart;
-    let bgMusicSynth;
-
-    function initAudio() {
-      if (!catchSynth) catchSynth = new Tone.Synth().toDestination();
-      if (!missSynth) missSynth = new Tone.Synth({ oscillator: { type: 'sawtooth' } }).toDestination();
-      Tone.context.resume();
-    }
-
-    function playCatchSound() {
-      catchSynth?.triggerAttackRelease("G5", "8n");
-    }
-
-    function playMissSound() {
-      missSynth?.triggerAttackRelease("C3", "8n");
-    }
-
-    // Start simple looping background music using Tone.js
-    function startBackgroundMusic() {
-      if (bgMusicSynth) return; // prevent multiple starts
-
-      bgMusicSynth = new Tone.Synth({
-        oscillator: { type: 'triangle' },
-        envelope: { attack: 0.1, decay: 0.1, sustain: 0.3, release: 1 }
-      }).toDestination();
-
-      const notes = ["C4", "E4", "G4", "B4", "C5", "B4", "G4", "E4"];
-      const now = Tone.now();
-
-      bgMusicPart = new Tone.Part((time, note) => {
-        bgMusicSynth.triggerAttackRelease(note, "8n", time);
-      }, notes.map((note, index) => [index * 0.5, note]));
-
-      bgMusicPart.loop = true;
-      bgMusicPart.loopEnd = notes.length * 0.5;
-      bgMusicPart.start(now);
-
-      Tone.Transport.start();
-    }
-
-    // Stop background music cleanly
-    function stopBackgroundMusic() {
-      if (!bgMusicPart) return;
-
-      bgMusicPart.stop();
-      bgMusicPart.dispose();
-      bgMusicPart = null;
-
-      bgMusicSynth.dispose();
-      bgMusicSynth = null;
-
-      Tone.Transport.stop();
-    }
-
-    let gameAreaBounds;
-    function updateGameAreaBounds() {
-      gameAreaBounds = gameArea.getBoundingClientRect();
-    }
+    function updateBasketRect() { basketRect = basket.getBoundingClientRect(); }
+    function updateGameAreaBounds() { gameAreaBounds = gameArea.getBoundingClientRect(); updateBasketRect(); }
 
     function moveBasket(clientX) {
       if (!gameActive) return;
       const basketWidth = basket.offsetWidth;
-      const gameAreaWidth = gameAreaBounds.width;
-      let newBasketX = clientX - gameAreaBounds.left - basketWidth / 2;
-      newBasketX = Math.max(0, Math.min(newBasketX, gameAreaWidth - basketWidth));
-      basket.style.left = `${newBasketX}px`;
+      let newX = clientX - gameAreaBounds.left - basketWidth / 2;
+      newX = Math.max(0, Math.min(newX, gameAreaBounds.width - basketWidth));
+      basket.style.left = `${newX}px`;
+      updateBasketRect();
     }
 
-    gameArea.addEventListener('mousemove', (e) => moveBasket(e.clientX));
-    gameArea.addEventListener('touchmove', (e) => {
-      e.preventDefault();
-      moveBasket(e.touches[0].clientX);
-    }, { passive: false });
+    gameArea.addEventListener('mousemove', e => moveBasket(e.clientX));
+    gameArea.addEventListener('touchmove', e => { e.preventDefault(); moveBasket(e.touches[0].clientX); }, { passive: false });
 
     function spawnItem() {
-      if (!gameActive) return;
-      const icon = officeIcons[Math.floor(Math.random() * officeIcons.length)];
+      const src = officeIcons[Math.floor(Math.random() * officeIcons.length)];
       const item = document.createElement('img');
-      item.src = icon.src;
-      item.alt = icon.alt;
+      item.src = src;
       item.className = 'falling-item';
-      item.style.top = `-60px`;
+      item.style.transform = 'translateY(-60px)';
       item.style.left = `${Math.random() * (gameAreaBounds.width - 50)}px`;
       gameArea.appendChild(item);
       fallingItems.push({ element: item, y: -60 });
     }
 
     function updateFallingItems() {
-      const basketRect = basket.getBoundingClientRect();
       for (let i = fallingItems.length - 1; i >= 0; i--) {
         const item = fallingItems[i];
         item.y += currentFallSpeed;
-        item.element.style.top = `${item.y}px`;
-
+        item.element.style.transform = `translateY(${item.y}px)`;
         const rect = item.element.getBoundingClientRect();
-        const collision =
-          rect.bottom >= basketRect.top &&
-          rect.top <= basketRect.bottom &&
-          rect.right >= basketRect.left &&
-          rect.left <= basketRect.right;
-
+        const collision = rect.bottom >= basketRect.top && rect.top <= basketRect.bottom && rect.right >= basketRect.left && rect.left <= basketRect.right;
         if (collision) {
           score++;
           scoreDisplay.textContent = score;
-          playCatchSound();
           item.element.remove();
           fallingItems.splice(i, 1);
-
-          // Increase speed slightly
           currentFallSpeed = baseFallSpeed + (score * 0.05);
-
-          // Adjust spawn interval to get faster but not too fast
           currentSpawnInterval = Math.max(300, baseSpawnInterval - (score * 15));
-          clearInterval(itemSpawnIntervalId);
-          itemSpawnIntervalId = setInterval(spawnItem, currentSpawnInterval);
         } else if (item.y > gameAreaBounds.height) {
           misses++;
           missesDisplay.textContent = misses;
-          playMissSound();
           item.element.remove();
           fallingItems.splice(i, 1);
-          if (misses >= maxMisses) endGame();
+          if (misses >= 3) endGame();
         }
       }
     }
 
-    function gameLoop() {
-      if (gameActive) {
-        updateFallingItems();
-        animationFrameId = requestAnimationFrame(gameLoop);
+    function gameLoop(time) {
+      if (!gameActive) return;
+      updateFallingItems();
+      if (time - lastSpawn > currentSpawnInterval) {
+        spawnItem();
+        lastSpawn = time;
       }
+      animationFrameId = requestAnimationFrame(gameLoop);
     }
 
-    async function startGame() {
-      await Tone.start();
-      initAudio();
-
-      startBackgroundMusic();
-
-      score = 0;
-      misses = 0;
+    function startGame() {
+      score = misses = 0;
       currentFallSpeed = baseFallSpeed;
       currentSpawnInterval = baseSpawnInterval;
       gameActive = true;
@@ -370,18 +151,12 @@
       updateGameAreaBounds();
       basket.style.left = `${(gameAreaBounds.width / 2) - (basket.offsetWidth / 2)}px`;
       basket.style.visibility = 'visible';
-
-      itemSpawnIntervalId = setInterval(spawnItem, currentSpawnInterval);
       animationFrameId = requestAnimationFrame(gameLoop);
     }
 
     function endGame() {
       gameActive = false;
-      clearInterval(itemSpawnIntervalId);
       cancelAnimationFrame(animationFrameId);
-
-      stopBackgroundMusic();
-
       finalScoreDisplay.textContent = score;
       gameOverModal.classList.remove('hidden');
       basket.style.visibility = 'hidden';
