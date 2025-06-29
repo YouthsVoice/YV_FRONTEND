@@ -33,7 +33,9 @@ export default function EmotionsGame() {
     "/games/emotions/logo1.webp",
     "/games/emotions/logo2.webp",
     "/games/emotions/03.webp",
-    "/games/emotions/05.webp"
+    "/games/emotions/05.webp",
+    "/games/emotions/06.webp"
+
   ];
 
   const updateBounds = () => {
