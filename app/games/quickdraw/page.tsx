@@ -14,7 +14,7 @@ export default function EmotionsGame() {
 
   // Game state with difficulty scaling
   const gameStateRef = useRef({
-    baseFallSpeed: 4,
+    baseFallSpeed: 5,
     baseSpawnInterval: 1200,
     currentFallSpeed: 4,
     currentSpawnInterval: 1200,
@@ -22,7 +22,7 @@ export default function EmotionsGame() {
     lastSpawn: 0,
     fallingItems: [] as { element: HTMLElement; y: number }[],
     // Difficulty scaling factors
-    speedIncreaseFactor: 0.1, // How much speed increases per point
+    speedIncreaseFactor: 0.3, // How much speed increases per point
     spawnRateIncreaseFactor: 10, // How much faster items spawn per point
     maxFallSpeed: 10, // Maximum falling speed
     minSpawnInterval: 500 // Minimum spawn interval
