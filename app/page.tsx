@@ -11,6 +11,7 @@ import MHMSection from "@/components/nsft/MHMSection";
 import Form from "@/components/nsft/Form";
 import GameAD from "@/components/nsft/GameAD";
 import TOTWORKPAGE from "@/components/nsft/TOTWORKPAGE";
+import ProjectMayaStory from "@/series/maya/ProjectMayaStory";
 export default function Home() {
 
   //  
@@ -40,10 +41,11 @@ export default function Home() {
       <main className="max-w-screen mx-auto">
         <Hero/>
               {/* Conditionally render PCPHOME or FAWSection */}
+              <ProjectMayaStory/>
               <MHMSection/>
               <TOTWORKPAGE/>
               <GameAD/>
-              <Form/>
+              {/*<Form/>*/}
       
       {showPCPHOME && <PCPHome/>}
       {showFAWSection && <FAWSection />}

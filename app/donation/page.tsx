@@ -10,6 +10,15 @@ import Donor from '@/components/donation/Donor';
 
 const Page = () => {
     const [value, setValue] = useState('1');
+     const [donor, setDonor] = useState<string | null>(null);
+
+
+      const checkRole = () => {
+         const roler = localStorage.getItem('donor');
+         if (roler) {
+           setDonor(roler);
+         }
+       };
 
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
@@ -17,7 +26,8 @@ const Page = () => {
 
   return (
 <Box sx={{ width: '100%', typography: 'body1' }}>
-      <TabContext value={value}>
+  {donor &&(
+          <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
             <Tab label="Normal donation" value="1" />
@@ -27,6 +37,12 @@ const Page = () => {
         <TabPanel value="1"><DonationPage/></TabPanel>
         <TabPanel value="2"><Donor/></TabPanel>
       </TabContext>
+
+  )}
+  {!donor &&(
+    <div></div>
+  )}
+
     </Box>
   )
 }
