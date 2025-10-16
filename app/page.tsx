@@ -8,7 +8,7 @@ import Footer from "@/components/Footer";
 import ContactUsSection from "@/components/nsft/ContactUsSection";
 import PCPHome from "@/components/nsft/PCPHome";
 import MHMSection from "@/components/nsft/MHMSection";
-import Form from "@/components/nsft/Form";
+//import Form from "@/components/nsft/Form";
 import GameAD from "@/components/nsft/GameAD";
 import TOTWORKPAGE from "@/components/nsft/TOTWORKPAGE";
 import ProjectMayaStory from "@/series/maya/ProjectMayaStory";

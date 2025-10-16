@@ -1,5 +1,5 @@
 'use client'; // if using app directory in Next.js
-import { useState} from 'react'
+import { useState,useEffect} from 'react'
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -23,7 +23,9 @@ const Page = () => {
   const handleChange = (event: React.SyntheticEvent, newValue: string) => {
     setValue(newValue);
   };
-
+useEffect(()=>{
+  checkRole()
+},[])
   return (
 <Box sx={{ width: '100%', typography: 'body1' }}>
   {donor &&(

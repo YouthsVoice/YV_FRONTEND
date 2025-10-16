@@ -19,7 +19,6 @@ import {
 
 import Grid from '@mui/material/Grid';
 import { API } from '@/API';
-import { list } from 'postcss';
 
 interface VolunteerEvent {
   id: string;
