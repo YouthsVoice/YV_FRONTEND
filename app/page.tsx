@@ -33,8 +33,8 @@ export default function Home() {
          const currentMonth = new Date().toLocaleString("default", { month: "long" });
 
          // Define months for conditional rendering
-         const showPCPHOME = ["February", "March"].includes(currentMonth);
-         const showFAWSection = ["October", "November", "December", "January"].includes(currentMonth);
+         const showPCPHOME = ["February", , "January", "March"].includes(currentMonth);
+         const showFAWSection = ["October", "November", "December"].includes(currentMonth);
   return (
     <>
     <Header/>
