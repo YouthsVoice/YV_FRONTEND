@@ -66,12 +66,6 @@ export default function ProgramHero({
             {program.tagline}
           </p>
 
-          {/* Overview */}
-
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-white/80">
-            {program.overview}
-          </p>
-
           {/* Buttons */}
 
           <div className="mt-10 flex flex-wrap gap-4">
