@@ -10,7 +10,7 @@ export const programs = [
     title: "Project MAYA",
     description:
       "Educating and empowering unprivileged children with essential life skills and knowledge.",
-    image: "/SignatureEvents/maya.webp",
+    image: "/SignatureEvents/MAYA.webp",
     impact: "15,000+ Girls Reached",
     icon: Heart,
     slug: "project-maya",
@@ -32,7 +32,7 @@ export const programs = [
     title: "Fight Against Winter",
     description:
       "Providing warmth and hope to vulnerable communities during harsh winters.",
-    image: "/SignatureEvents/faw.webp",
+    image: "/SignatureEvents/FAW.webp",
     impact: "1000+ Beneficiaries",
     icon: Snowflake,
     slug: "fight-against-winter",
@@ -43,7 +43,7 @@ export const programs = [
     title: "Project Chauna Piyaju",
     description:
       "Gifting unprivilaged children a Eid full of smiles.",
-    image: "/SignatureEvents/pcp.webp",
+    image: "/SignatureEvents/PCP.webp",
     impact: "50,000+ Meals Served",
     icon: Utensils,
     slug: "project-chauna-piyaju",
