@@ -1,0 +1,42 @@
+/*import { notFound } from "next/navigation";
+
+import { programs } from "@/data/programs";
+
+import ProgramHero from "@/components/program-details/ProgramHero";
+import ProgramMetrics from "@/components/program-details/ProgramMetrics";
+import ProgramOverview from "@/components/program-details/ProgramOverview";
+import ProgramGallery from "@/components/program-details/ProgramGallery";
+import ProgramStories from "@/components/program-details/ProgramStories";
+import ProgramCTA from "@/components/program-details/ProgramCTA";
+import RelatedPrograms from "@/components/program-details/RelatedPrograms";
+
+interface Props {
+  params: {
+    slug: string;
+  };
+}
+
+export default function ProgramDetailPage({
+  params,
+}: Props) {
+  const program = programs.find(
+    (p) => p.slug === params.slug
+  );
+
+  if (!program) {
+    notFound();
+  }
+
+  return (
+    <>
+      <ProgramHero program={program} />
+      <ProgramMetrics program={program} />
+      <ProgramOverview program={program} />
+      <ProgramGallery program={program} />
+      <ProgramStories program={program} />
+      <ProgramCTA program={program} />
+      <RelatedPrograms currentSlug={program.slug} />
+    </>
+  );
+}
+  */
