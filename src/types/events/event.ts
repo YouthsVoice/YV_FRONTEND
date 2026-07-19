@@ -21,5 +21,7 @@ export interface Event {
 
   status: "upcoming" | "ongoing" | "completed";
 
+  registrationLink?: string;
+
   gallery: string[];
 }
