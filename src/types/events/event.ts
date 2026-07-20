@@ -23,5 +23,24 @@ export interface Event {
 
   registrationLink?: string;
 
+  overview: {
+    title: string;
+    subtitle: string;
+    description: string[];
+    image: string;
+  };
+information: {
+    participants: string;
+    duration: string;
+    entry: string;
+    language: string;
+  };
+
+  schedule: {
+    time: string;
+    title: string;
+    description: string;
+  }[];
+
   gallery: string[];
 }
