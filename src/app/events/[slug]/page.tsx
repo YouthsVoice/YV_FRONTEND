@@ -25,6 +25,9 @@ export default async function EventPage({ params }: Props) {
     notFound();
   }
 
+
+
+
   return (
     <>
       <EventHero event={event} />
