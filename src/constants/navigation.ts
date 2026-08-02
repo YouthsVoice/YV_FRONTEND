@@ -16,10 +16,6 @@ export const navLinks = [
     href: "/volunteer",
   },
   {
-    name: "Impact",
-    href: "/impact",
-  },
-  {
     name: "Stories",
     href: "/stories",
   },
