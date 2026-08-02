@@ -1,12 +1,9 @@
-import React from 'react'
 import DonationForm from '@/components/donate/DonationForm'
 
-const page = () => {
+export default function DonatePage() {
   return (
     <>
       <DonationForm />
     </>
   )
 }
-
-export default page
