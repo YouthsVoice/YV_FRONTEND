@@ -23,6 +23,12 @@ export interface Event {
 
   registrationLink?: string;
 
+  volunteerRegistration: boolean;
+
+  registrationFee: number;
+
+  availableSeats: number;
+
   overview: {
     title: string;
     subtitle: string;

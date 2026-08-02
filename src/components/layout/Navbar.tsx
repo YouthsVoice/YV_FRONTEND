@@ -31,9 +31,9 @@ export default function Navbar() {
           </nav>
 
           <div className="hidden lg:block">
-            <button className="bg-primary cursor-pointer text-white px-5 py-2 rounded-xl">
+            <Link href="/donate" type="button" className="bg-primary cursor-pointer text-white px-5 py-2 rounded-xl">
               Donate
-            </button>
+            </Link>
           </div>
 
           <button

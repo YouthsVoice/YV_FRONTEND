@@ -25,7 +25,14 @@ export const events: Event[] = [
 
     status: "upcoming",
 
-    registrationLink: "/volunteer",
+registrationLink: "/volunteer",
+
+volunteerRegistration: true,
+
+registrationFee: 300,
+
+availableSeats: 80,
+
 
     information: {
       participants: "Open for Everyone",
@@ -117,7 +124,13 @@ export const events: Event[] = [
 
     status: "upcoming",
 
-    registrationLink: "/volunteer",
+registrationLink: "/volunteer",
+
+volunteerRegistration: true,
+
+registrationFee: 500,
+
+availableSeats: 45,
 
     information: {
       participants: "Registered Volunteers",
@@ -201,7 +214,14 @@ export const events: Event[] = [
 
     featured: false,
 
-    status: "completed",
+   status: "completed",
+
+volunteerRegistration: false,
+
+registrationFee: 0,
+
+availableSeats: 0,
+
 
     information: {
       participants: "Students",
@@ -281,6 +301,11 @@ export const events: Event[] = [
 
     status: "completed",
 
+volunteerRegistration: false,
+
+registrationFee: 0,
+
+availableSeats: 0,
     information: {
       participants: "Open to Public",
       duration: "5 Hours",
