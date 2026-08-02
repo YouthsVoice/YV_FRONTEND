@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description: "Explore upcoming events, past initiatives, and statistics from Youth's Voice.",
   authors:[{name: "Md. Sajid Hossain",},{name:"Youth's Voice", url: "https://youthsvoice.org/"}],
   keywords:["events youthsvoice", "youths voice events", "youths voice upcoming events", "youths voice past events", "youths voice event statistics"],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,}
 }
 
 export default function EventsPage() {

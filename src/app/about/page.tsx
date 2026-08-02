@@ -13,9 +13,6 @@ export const metadata: Metadata = {
   description: "Learn more about Youth's Voice, our mission, vision, and the team behind our impactful initiatives.",
   authors:[{name: "Md. Sajid Hossain",},{name:"Youth's Voice", url: "https://youthsvoice.org/"}],
   keywords:["about youthsvoice", "youths voice mission", "youths voice vision", "youths voice team", "youths voice history", "youths voice values", "youths voice partners"],
-  viewport: {
-    width: "device-width",
-    initialScale: 1,}
 }
 
 
