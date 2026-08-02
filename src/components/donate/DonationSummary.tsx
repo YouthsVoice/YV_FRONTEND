@@ -31,7 +31,10 @@ const campaignNames: Record<string, string> = {
 };
 
 const paymentNames: Record<PaymentMethodValue, string> = {
-  bkash: "bKash"
+  bkash: "bKash",
+  nagad: "Nagad",
+  rocket: "Rocket",
+  bank: "Bank Transfer"
 };
 
 export default function DonationSummary({
