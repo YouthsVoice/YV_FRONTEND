@@ -6,14 +6,17 @@ import ImpactStories from "@/components/home/ImpactStories";
 import DonationCTA from "@/components/home/DonationCTA";
 import MediaUpdates from "@/components/home/MediaUpdates";
 import Newsletter from "@/components/home/Newsletter";
+import { getHomeEvents } from "@/lib/api/event";
 
-export default function HomePage() {
+export default async function HomePage() {
+   const events = await getHomeEvents();
+
   return (
     <>
       <Hero />
       <ImpactStats />
       <SignaturePrograms />
-      <VolunteerHub />
+      <VolunteerHub  events={events} />
       <ImpactStories />
       <DonationCTA />
       <MediaUpdates />

@@ -1,14 +1,15 @@
 "use client";
 
 import EventCard from "@/components/events/EventCard";
-import { events } from "@/data/events/events";
 import { Event } from "@/types/events/event";
 
 interface Props {
+  events: Event[];
   event: Event;
 }
 
 export default function RelatedEvents({
+  events,
   event,
 }: Props) {
   let related = events.filter(

@@ -33,7 +33,7 @@ export default function EventHero({ event }: Props) {
       {/* Background */}
 
       <Image
-        src={event.coverImage}
+        src={event.cover_image}
         alt={event.title}
         fill
         priority
@@ -107,7 +107,7 @@ export default function EventHero({ event }: Props) {
           <div className="mt-12 flex flex-wrap gap-4">
 
             <Link
-              href={event.registrationLink ?? "#"}
+              href={event.registration_link ?? "#"}
               className="inline-flex items-center gap-2 rounded-2xl bg-[#155E4B] px-8 py-4 font-semibold transition hover:bg-[#114A3B]"
             >
               Register Now

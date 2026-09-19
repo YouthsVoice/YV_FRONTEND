@@ -1,20 +1,7 @@
 import { notFound } from "next/navigation";
+import EventEditor from "@/components/admin/EventEditor";
 import { API_URL } from "@/lib/api/event";
 
-import EventHero from "@/components/event-details/EventHero";
-import EventInfo from "@/components/event-details/EventInfo";
-import EventOverview from "@/components/event-details/EventOverview";
-import EventSchedule from "@/components/event-details/EventSchedule";
-import EventGallery from "@/components/event-details/EventGallery";
-import RelatedEvents from "@/components/event-details/RelatedEvents";
-import RegistrationCTA from "@/components/event-details/RegistrationCTA";
-
-interface Props {
-  params: Promise<{
-    slug: string;
-  }>;
-
-}
 interface Event {
   id?: number;
   title: string;
@@ -64,6 +51,7 @@ interface Event {
   created_at: string;
   updated_at: string;
 }
+
 async function getEvent(slug: string): Promise<Event> {
   const response = await fetch(`${API_URL}/api/events/${slug}/`, {
     next: {
@@ -81,41 +69,36 @@ async function getEvent(slug: string): Promise<Event> {
 
   return response.json();
 }
-async function getEvents(): Promise<Event[]> {
-  const response = await fetch(`${API_URL}/api/events/`, {
-    next: {
-      revalidate: 60,
-    },
-  });
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch events");
-  }
-
-  return response.json();
-}
-
-export default async function EventPage({ params }: Props) {
+export default async function EditEventPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
   const { slug } = await params;
 
   const event = await getEvent(slug);
 
-  if (!event) {
-    notFound();
-  }
-
-  const events = await getEvents();
-
-
   return (
-    <>
-      <EventHero event={event} />
-      <EventInfo event={event} />
-      <EventOverview event={event} />
-      <EventSchedule event={event} />
-      <EventGallery event={event} />
-      <RelatedEvents events={events} event={event} />
-      <RegistrationCTA event={event} />
-    </>
+    <div className="mx-auto max-w-6xl">
+      {/* Header */}
+      <div className="mb-8">
+        <div className="flex flex-wrap items-center gap-3">
+          <h1 className="text-2xl font-bold text-slate-900">
+            Edit Event
+          </h1>
+
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-600">
+            {event.slug}
+          </span>
+        </div>
+
+        <p className="mt-1 text-sm text-slate-500">
+          Update the event information below.
+        </p>
+      </div>
+
+      <EventEditor event={event} />
+    </div>
   );
 }

@@ -1,14 +1,19 @@
 "use client";
 
 import { CheckCircle2 } from "lucide-react";
-import { donationCampaigns } from "@/data/donate/donation-campaigns";
+import { VoluntterEventType } from "@/types/events/event";
+
+
+
 
 interface CampaignSelectorProps {
+  events: VoluntterEventType[];
   value: string;
   onChange: (value: string) => void;
 }
 
 export default function CampaignSelector({
+  events,
   value,
   onChange,
 }: CampaignSelectorProps) {
@@ -33,14 +38,14 @@ export default function CampaignSelector({
 
       <div className="space-y-4">
 
-        {donationCampaigns.map((campaign) => {
-          const selected = value === campaign.id;
+        {events.map((campaign) => {
+          const selected = value === campaign.slug;
 
           return (
             <button
-              key={campaign.id}
+              key={campaign.slug}
               type="button"
-              onClick={() => onChange(campaign.id)}
+              onClick={() => onChange(campaign.slug)}
               className={`
                 group
                 flex

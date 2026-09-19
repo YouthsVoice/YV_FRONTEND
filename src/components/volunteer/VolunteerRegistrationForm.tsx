@@ -9,21 +9,25 @@ import {
   CreditCard,
 } from "lucide-react";
 
-import { events } from "@/data/events/events";
+import { VoluntterEventType } from "@/types/events/event";
+import { API_URL } from "@/lib/api/event";
 
 type PaymentMethod = "bkash" | "nagad" | "rocket" | "bank";
 
 interface VolunteerRegistrationFormProps {
+  events: VoluntterEventType[];
   selectedEvent: string;
   onEventChange: (slug: string) => void;
 }
 
+
 export default function VolunteerRegistrationForm({
+  events,
   selectedEvent,
   onEventChange,
 }: VolunteerRegistrationFormProps) {
   const [form, setForm] = useState({
-    fullName: "",
+    full_name: "",
     email: "",
     phone: "",
 
@@ -53,10 +57,145 @@ export default function VolunteerRegistrationForm({
     }));
   };
 
+const [isSubmitting, setIsSubmitting] = useState(false);
+const [error, setError] = useState("");
+const [success, setSuccess] = useState("");
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  setError("");
+  setSuccess("");
+
+  if (!selectedEvent) {
+    setError("Please select an event.");
+    return;
+  }
+
+  if (
+    !form.full_name.trim() ||
+    !form.email.trim() ||
+    !form.phone.trim() ||
+    !form.institution.trim() ||
+    !form.department.trim() ||
+    !form.occupation.trim() ||
+    !form.tshirtSize ||
+    !form.experience.trim() ||
+    !form.emergencyName.trim() ||
+    !form.emergencyPhone.trim()
+  ) {
+    setError("Please fill in all required fields.");
+    return;
+  }
+
+  if (!API_URL) {
+    setError("Backend API URL is not configured.");
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const response = await fetch(
+      `${API_URL}/api/volunteers/register/`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          event_slug: selectedEvent,
+
+          full_name: form.full_name.trim(),
+          email: form.email.trim(),
+          phone: form.phone.trim(),
+
+          institution: form.institution.trim(),
+          department: form.department.trim(),
+          occupation: form.occupation.trim(),
+
+          tshirt_size: form.tshirtSize,
+          previous_experience: form.experience.trim(),
+
+          emergency_contact_name:
+            form.emergencyName.trim(),
+
+          emergency_contact_number:
+            form.emergencyPhone.trim(),
+
+          payment_method: form.paymentMethod,
+        }),
+      }
+    );
+
+    // Read response safely
+    const contentType =
+      response.headers.get("content-type");
+
+    if (!contentType?.includes("application/json")) {
+      const text = await response.text();
+
+      console.error(
+        "Non-JSON response:",
+        text
+      );
+
+      throw new Error(
+        `Server returned ${response.status} instead of JSON.`
+      );
+    }
+
+    const data = await response.json();
+
+    console.log(
+      "Volunteer registration response:",
+      data
+    );
+
+    if (!response.ok) {
+      throw new Error(
+        data?.detail ||
+          data?.error ||
+          data?.message ||
+          "Failed to submit volunteer registration."
+      );
+    }
+
+    // bKash payment redirect
+    if (data?.bkash_url) {
+      window.location.href = data.bkash_url;
+      return;
+    }
+
+    if (data?.payment_url) {
+      window.location.href =
+        data.payment_url;
+      return;
+    }
+
+    setSuccess(
+      "Registration submitted successfully."
+    );
+  } catch (error) {
+    console.error(
+      "Volunteer registration error:",
+      error
+    );
+
+    setError(
+      error instanceof Error
+        ? error.message
+        : "Something went wrong. Please try again."
+    );
+  } finally {
+    setIsSubmitting(false);
+  }
+};
   return (
-    <section
+    <form
       id="registration"
       className="bg-[#F8FAF9] py-24"
+      onSubmit={handleSubmit}
     >
       <div className="mx-auto max-w-5xl px-4">
 
@@ -102,13 +241,7 @@ export default function VolunteerRegistrationForm({
                 Select an Event
               </option>
 
-              {events
-                .filter(
-                  (event) =>
-                    event.status === "upcoming" &&
-                    event.volunteerRegistration
-                )
-                .map((event) => (
+              {events.map((event) => (
                   <option
                     key={event.slug}
                     value={event.slug}
@@ -139,9 +272,9 @@ export default function VolunteerRegistrationForm({
               <input
                 type="text"
                 placeholder="Full Name"
-                value={form.fullName}
+                value={form.full_name}
                 onChange={(e) =>
-                  updateField("fullName", e.target.value)
+                  updateField("full_name", e.target.value)
                 }
                 className="rounded-2xl border border-gray-300 px-5 py-4 outline-none focus:border-[#155E4B]"
               />
@@ -341,19 +474,7 @@ export default function VolunteerRegistrationForm({
                 {
                   label: "bKash",
                   value: "bkash",
-                },
-                {
-                  label: "Nagad",
-                  value: "nagad",
-                },
-                {
-                  label: "Rocket",
-                  value: "rocket",
-                },
-                {
-                  label: "Bank Transfer",
-                  value: "bank",
-                },
+                }
               ].map((method) => (
                 <label
                   key={method.value}
@@ -434,7 +555,7 @@ export default function VolunteerRegistrationForm({
 
                 <span className="font-semibold text-[#155E4B]">
                   {selectedEventData
-                    ? `৳${selectedEventData.registrationFee}`
+                    ? `৳${selectedEventData.registration_fee}`
                     : "-"}
                 </span>
 
@@ -459,8 +580,8 @@ export default function VolunteerRegistrationForm({
           {/* Button */}
 
           <button
-            type="button"
-            className="mt-10 w-full rounded-2xl bg-[#155E4B] py-5 text-lg font-semibold text-white transition hover:bg-[#114A3B]"
+            type="submit"
+            className="mt-10 w-full cursor-pointer rounded-2xl bg-[#155E4B] py-5 text-lg font-semibold text-white transition hover:bg-[#114A3B]"
           >
             Register & Continue to Payment
           </button>
@@ -469,6 +590,6 @@ export default function VolunteerRegistrationForm({
 
       </div>
 
-    </section>
+    </form>
   );
 }

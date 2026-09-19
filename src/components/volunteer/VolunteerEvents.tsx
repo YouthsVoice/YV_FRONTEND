@@ -9,22 +9,21 @@ import {
   ArrowRight,
 } from "lucide-react";
 
-import { events } from "@/data/events/events";
+import { VoluntterEventType } from "@/types/events/event";
+
 
 interface VolunteerEventsProps {
+  events: VoluntterEventType[];
   selectedEvent: string;
   onSelect: (slug: string) => void;
+
 }
 
 export default function VolunteerEvents({
+  events,
   selectedEvent,
   onSelect,
 }: VolunteerEventsProps) {
-  const volunteerEvents = events.filter(
-    (event) =>
-      event.status === "upcoming" &&
-      event.volunteerRegistration
-  );
 
   const handleRegister = (slug: string) => {
     onSelect(slug);
@@ -66,7 +65,7 @@ export default function VolunteerEvents({
 
         <div className="mt-16 grid gap-8 lg:grid-cols-2">
 
-          {volunteerEvents.map((event) => {
+          {events.map((event) => {
             const selected =
               selectedEvent === event.slug;
 
@@ -91,13 +90,16 @@ export default function VolunteerEvents({
               >
                 {/* Image */}
 
-                <div className="relative h-64">
+                <div className="relative h-68">
 
                   <Image
-                    src={event.coverImage}
+                    src={event.cover_image}
                     alt={event.title}
+                    sizes="auto"
                     fill
-                    className="object-cover"
+                    loading="eager"
+
+                    className="object-cover h-68"
                   />
 
                 </div>
@@ -115,7 +117,7 @@ export default function VolunteerEvents({
                   </h3>
 
                   <p className="mt-3 leading-7 text-slate-600">
-                    {event.tagline}
+                    {event.description}
                   </p>
 
                   {/* Meta */}
@@ -162,7 +164,7 @@ export default function VolunteerEvents({
                       </p>
 
                       <p className="text-2xl font-black text-[#155E4B]">
-                        ৳{event.registrationFee}
+                        ৳{event.registration_fee}
                       </p>
 
                     </div>
@@ -173,7 +175,7 @@ export default function VolunteerEvents({
 
                         <Users size={16} />
 
-                        {event.availableSeats} seats left
+                        {event.available_seats} seats left
 
                       </div>
 

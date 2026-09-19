@@ -4,21 +4,19 @@ import { ArrowRight, Lock } from "lucide-react";
 
 interface DonateButtonProps {
   loading?: boolean;
-  disabled?: boolean;
   onClick?: () => void;
 }
 
 export default function DonateButton({
-  loading = false,
-  disabled = false,
+  loading ,
   onClick,
 }: DonateButtonProps) {
   return (
     <div className="space-y-5">
 
       <button
-        type="button"
-        disabled={disabled || loading}
+        type="submit"
+        disabled={ loading}
         onClick={onClick}
         className="
           group

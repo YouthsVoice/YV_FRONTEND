@@ -20,24 +20,6 @@ const paymentMethods = [
     description: "Fast and secure mobile payment.",
     color: "bg-pink-50 text-pink-600",
   },
-  {
-    id: "nagad" as const,
-    name: "Nagad",
-    description: "Pay instantly using Nagad.",
-    color: "bg-orange-50 text-orange-600",
-  },
-  {
-    id: "rocket" as const,
-    name: "Rocket",
-    description: "Dutch-Bangla mobile banking.",
-    color: "bg-purple-50 text-purple-600",
-  },
-  {
-    id: "bank" as const,
-    name: "Bank Transfer",
-    description: "Transfer directly from your bank.",
-    color: "bg-blue-50 text-blue-600",
-  },
 ];
 
 export default function PaymentMethod({
@@ -102,10 +84,10 @@ export default function PaymentMethod({
               <div
                 className={`mb-5 flex h-14 w-14 items-center justify-center rounded-2xl ${method.color}`}
               >
-                {method.id === "bank" ? (
-                  <Landmark size={28} />
-                ) : (
+                {method.id === "bkash" ? (
                   <Wallet size={28} />
+                ) : (
+                  <Landmark size={28} />
                 )}
               </div>
 

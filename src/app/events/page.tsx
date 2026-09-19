@@ -4,7 +4,7 @@ import UpcomingEvents from "@/components/events/UpcomingEvents";
 import EventsTimeline from "@/components/events/EventsTimeline";
 import PastEvents from "@/components/events/PastEvents";
 import EventStatistics from "@/components/events/EventStatistics";
-import { events } from "@/data/events/events";
+import { getTopEvent } from "@/lib/api/event";
 
 import type { Metadata } from "next";
 
@@ -15,15 +15,15 @@ export const metadata: Metadata = {
   keywords:["events youthsvoice", "youths voice events", "youths voice upcoming events", "youths voice past events", "youths voice event statistics"],
 }
 
-export default function EventsPage() {
-  const featuredEvent = events.find((event) => event.featured);
+export default async function EventsPage() {
+  const events = await getTopEvent();
 
   return (
     <>
       <EventsHero />
 
-      {featuredEvent && (
-        <FeaturedEvent event={featuredEvent} />
+      {events && (
+        <FeaturedEvent event={events} />
       )}
 
        <UpcomingEvents />

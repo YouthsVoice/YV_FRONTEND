@@ -4,12 +4,23 @@ import Link from "next/link";
 import CountUp from "react-countup";
 import { motion } from "framer-motion";
 import VolunteerOpportunityCard from "./VolunteerOpportunityCard";
-import { volunteerOpportunities } from "@/constants/volunteer";
 
-export default function VolunteerHub() {
+interface VolunteerEvent {
+  title: string;
+  location: string;
+  slug: string;
+  status: "upcoming" | "ongoing" | "completed";
+}
+
+interface VolunteerHubProps {
+  events: VolunteerEvent[];
+}
+
+export default function VolunteerHub({
+  events,
+}: VolunteerHubProps) {
   return (
     <section className="py-24 bg-white">
-
       <div className="mx-auto max-w-7xl px-4">
 
         <div className="grid gap-16 lg:grid-cols-2">
@@ -99,21 +110,26 @@ export default function VolunteerHub() {
             className="space-y-6"
           >
 
-            {volunteerOpportunities.map(
-              (opportunity) => (
-                <VolunteerOpportunityCard
-                  key={opportunity.title}
-                  {...opportunity}
-                />
-              )
-            )}
+            {events.map((event) => (
+              <VolunteerOpportunityCard
+                key={event.slug}
+                title={event.title}
+                location={event.location}
+                type={
+                  event.status === "ongoing"
+                    ? "Open"
+                    : event.status === "upcoming"
+                      ? "Upcoming"
+                      : "Completed"
+                }
+              />
+            ))}
 
           </motion.div>
 
         </div>
 
       </div>
-
     </section>
   );
 }

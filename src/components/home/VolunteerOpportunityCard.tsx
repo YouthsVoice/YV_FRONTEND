@@ -3,6 +3,7 @@ import {
   MapPin,
 } from "lucide-react";
 
+import Link from "next/link";
 interface Props {
   title: string;
   location: string;
@@ -34,10 +35,12 @@ export default function VolunteerOpportunityCard({
         {location}
       </div>
 
-      <button className="mt-5 flex items-center gap-2 font-semibold text-[#155E4B]">
-        Apply Now
-        <ArrowRight size={18} />
-      </button>
+      <Link href="/volunteer">
+        <button className="mt-5 flex items-center gap-2 font-semibold text-[#155E4B]">
+          Apply Now
+          <ArrowRight size={18} />
+        </button>
+      </Link>
 
     </div>
   );
