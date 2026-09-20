@@ -9,6 +9,8 @@ import { Event } from "@/types/events/event";
 
 import type { Metadata } from "next";
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: "Events - Youth's Voice",
   description: "Explore upcoming events, past initiatives, and statistics from Youth's Voice.",

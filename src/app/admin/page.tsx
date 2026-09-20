@@ -17,7 +17,7 @@ interface Event {
   status: "upcoming" | "ongoing" | "completed";
   featured: boolean;
 }
-
+export const dynamic = 'force-dynamic';
 async function getEvents(): Promise<Event[]> {
   const response = await fetch(`${API_URL}/api/events/`, {
     next: {
