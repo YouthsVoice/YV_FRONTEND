@@ -11,7 +11,7 @@ interface Props {
 
 export default function RegistrationCTA({ event }: Props) {
   const isRegistrationOpen =
-    event.status === "upcoming" && event.registrationLink;
+    event.status === "upcoming" && event.registration_link;
 
   return (
     <section className="relative overflow-hidden py-28">
@@ -48,7 +48,7 @@ export default function RegistrationCTA({ event }: Props) {
 
           {isRegistrationOpen ? (
             <Link
-              href={event.registrationLink!}
+              href={event.registration_link!}
               className="inline-flex items-center gap-2 rounded-2xl bg-white px-8 py-4 font-semibold text-[#155E4B] transition hover:-translate-y-1 hover:shadow-xl"
             >
               Register Now
