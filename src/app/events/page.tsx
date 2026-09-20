@@ -42,7 +42,7 @@ export default async function EventsPage() {
       )}
 
        <UpcomingEvents events={allEvents} />
-       <PastEvents />
+       <PastEvents events={allEvents} />
        <EventsTimeline />
        <EventStatistics />
     </>

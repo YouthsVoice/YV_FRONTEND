@@ -1,9 +1,13 @@
 "use client";
 
 import PastEventCard from "./PastEventCard";
-import { events } from "@/data/events/events";
+import { Event } from "@/types/events/event";
 
-export default function PastEvents() {
+interface Props {
+  events: Event[];
+}
+
+export default function PastEvents({ events }: Props) {
   const completedEvents = events.filter(
     (event) => event.status === "completed"
   );
