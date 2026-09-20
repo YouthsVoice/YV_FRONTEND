@@ -1,11 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { Event } from "@/types/events/event";
 
 import EventCard from "./EventCard";
-
-import { events } from "@/data/events/events";
-
 const filters = [
   "All",
   "Health",
@@ -13,8 +11,11 @@ const filters = [
   "Community Service",
   "Festival",
 ];
+interface Props {
+  events: Event[];
+}
 
-export default function UpcomingEvents() {
+export default function UpcomingEvents({ events }: Props) {
   const [activeFilter, setActiveFilter] = useState("All");
 
   const upcomingEvents = useMemo(() => {
