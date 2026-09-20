@@ -39,7 +39,7 @@ export default function PastEventCard({
       <div className="relative h-72 overflow-hidden">
 
         <Image
-          src={event.coverImage}
+          src={event.cover_image}
           alt={event.title}
           fill
           className="

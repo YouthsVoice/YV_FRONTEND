@@ -31,7 +31,7 @@ export default function EventCard({ event }: Props) {
       <div className="relative h-64 overflow-hidden">
 
         <Image
-          src={event.coverImage}
+          src={event.cover_image}
           alt={event.title}
           fill
           className="object-cover transition duration-700 group-hover:scale-110"
