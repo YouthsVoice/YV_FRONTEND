@@ -6,7 +6,7 @@ export interface HomeEvent {
 }
 import { HomeEventType ,VoluntterEventType } from "@/types/events/event";
 
-export const API_URL = process.env.DJANGO_API_URL || "http://localhost:8000";
+export const API_URL = process.env.DJANGO_API_URL || "https://server-rippling-lantern-482.fly.dev";
 
 export async function getHomeEvents(): Promise<HomeEvent[]> {
   const response = await fetch(`${API_URL}/api/events/home/`, {
