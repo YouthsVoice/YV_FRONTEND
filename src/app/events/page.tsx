@@ -9,44 +9,60 @@ import { Event } from "@/types/events/event";
 
 import type { Metadata } from "next";
 
-export const dynamic = 'force-dynamic';
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Events - Youth's Voice",
-  description: "Explore upcoming events, past initiatives, and statistics from Youth's Voice.",
-  authors:[{name: "Md. Sajid Hossain",},{name:"Youth's Voice", url: "https://youthsvoice.org/"}],
-  keywords:["events youthsvoice", "youths voice events", "youths voice upcoming events", "youths voice past events", "youths voice event statistics"],
-}
+  description:
+    "Explore upcoming events, past initiatives, and statistics from Youth's Voice.",
+  authors: [
+    { name: "Md. Sajid Hossain" },
+    {
+      name: "Youth's Voice",
+      url: "https://youthsvoice.org/",
+    },
+  ],
+  keywords: [
+    "events youthsvoice",
+    "youths voice events",
+    "youths voice upcoming events",
+    "youths voice past events",
+    "youths voice event statistics",
+  ],
+};
+
 async function getEvents(): Promise<Event[]> {
   const response = await fetch(`${API_URL}/api/events/`, {
-    next: {
-      revalidate: 60,
-    },
+    cache: "no-store",
   });
 
   if (!response.ok) {
-    throw new Error("Failed to fetch events");
+    console.error(
+      `Failed to fetch events: ${response.status} ${response.statusText}`
+    );
+
+    throw new Error(`Failed to fetch events: ${response.status}`);
   }
 
   return response.json();
 }
 
 export default async function EventsPage() {
-  const events = await getTopEvent();
-  const allEvents = await getEvents();
+  const [events, allEvents] = await Promise.all([
+    getTopEvent(),
+    getEvents(),
+  ]);
 
   return (
     <>
       <EventsHero />
 
-      {events && (
-        <FeaturedEvent event={events} />
-      )}
+      {events && <FeaturedEvent event={events} />}
 
-       <UpcomingEvents events={allEvents} />
-       <PastEvents events={allEvents} />
-       <EventsTimeline />
-       <EventStatistics />
+      <UpcomingEvents events={allEvents} />
+      <PastEvents events={allEvents} />
+      <EventsTimeline />
+      <EventStatistics />
     </>
   );
 }
