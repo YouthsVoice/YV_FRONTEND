@@ -24,22 +24,29 @@ export async function getHomeEvents(): Promise<HomeEvent[]> {
 
 
 export async function getTopEvent(): Promise<HomeEventType | null> {
-  const response = await fetch(
-    `${API_URL}/api/events/home/top/`,
-    {
-      next: {
-        revalidate: 60,
-      },
-    }
-  );
+  const response = await fetch(`${API_URL}/api/events/home/top/`, {
+    next: {
+      revalidate: 60,
+    },
+  });
 
   if (!response.ok) {
-    throw new Error("Failed to fetch top event");
+    const errorText = await response.text();
+
+    console.error("TOP EVENT API ERROR:", {
+      status: response.status,
+      statusText: response.statusText,
+      body: errorText,
+    });
+
+    throw new Error(
+      `Failed to fetch top event: ${response.status} ${response.statusText}`
+    );
   }
 
   const data: HomeEventType = await response.json();
 
-  return data
+  return data;
 }
 
 export async function getVolunteerEvents(): Promise<VoluntterEventType[]> {
