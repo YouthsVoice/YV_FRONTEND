@@ -9,6 +9,12 @@ const nextConfig: NextConfig = {
         port: '',
         pathname: '/v/**',
       },
+            {
+        protocol: 'https',
+        hostname: 'scontent.fcgp38-1.fna.fbcdn.net',
+        port: '',
+        pathname: '/v/**',
+      },
     ],
   },
 };
