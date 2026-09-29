@@ -1,7 +1,16 @@
-"use client";
+"use client"
 
+import { useState } from "react";
 import Image from "next/image";
 import { Images } from "lucide-react";
+
+import Lightbox from "yet-another-react-lightbox";
+import Zoom from "yet-another-react-lightbox/plugins/zoom";
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
+import Thumbnails from "yet-another-react-lightbox/plugins/thumbnails";
+
+import "yet-another-react-lightbox/styles.css";
+import "yet-another-react-lightbox/plugins/thumbnails.css";
 
 import { Event } from "@/types/events/event";
 
@@ -10,7 +19,14 @@ interface Props {
 }
 
 export default function EventGallery({ event }: Props) {
+  const [open, setOpen] = useState(false);
+  const [index, setIndex] = useState(0);
+
+  const slides = event.gallery.map((image) => ({
+    src: image,
+  }));
   if (!event.gallery.length) return null;
+
 
   return (
     <section className="bg-[#FFFDF7] py-24">
@@ -44,7 +60,10 @@ export default function EventGallery({ event }: Props) {
 
           {/* Hero Image */}
 
-          <div className="relative overflow-hidden rounded-[32px] lg:col-span-2 lg:row-span-2">
+          <div onClick={() => {
+            setIndex(0);
+            setOpen(true);
+          }} className="relative overflow-hidden rounded-[32px] lg:col-span-2 lg:row-span-2">
 
             <Image
               src={event.gallery[0]}
@@ -59,6 +78,10 @@ export default function EventGallery({ event }: Props) {
             <div
               key={index}
               className="relative overflow-hidden rounded-[28px]"
+              onClick={() => {
+                setIndex(index + 1);
+                setOpen(true);
+              }}
             >
               <Image
                 src={image}
@@ -103,6 +126,13 @@ export default function EventGallery({ event }: Props) {
         )}
 
       </div>
+      <Lightbox
+  open={open}
+  close={() => setOpen(false)}
+  slides={slides}
+  index={index}
+  plugins={[Zoom, Fullscreen, Thumbnails]}
+/>
     </section>
   );
 }
