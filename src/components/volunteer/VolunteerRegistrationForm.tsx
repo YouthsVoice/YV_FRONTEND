@@ -270,6 +270,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="grid gap-6 md:grid-cols-2">
 
               <input
+              required
                 type="text"
                 placeholder="Full Name"
                 value={form.full_name}
@@ -280,6 +281,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
 
               <input
+              required
                 type="email"
                 placeholder="Email Address"
                 value={form.email}
@@ -326,10 +328,12 @@ const handleSubmit = async (e: React.FormEvent) => {
                 onChange={(e) =>
                   updateField("institution", e.target.value)
                 }
+                required
                 className="rounded-2xl border border-gray-300 px-5 py-4 outline-none focus:border-[#155E4B]"
               />
 
               <input
+              required
                 type="text"
                 placeholder="Department / Class"
                 value={form.department}
@@ -341,6 +345,7 @@ const handleSubmit = async (e: React.FormEvent) => {
 
               <input
                 type="text"
+                required
                 placeholder="Occupation"
                 value={form.occupation}
                 onChange={(e) =>
@@ -370,6 +375,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="grid gap-6 md:grid-cols-2">
 
               <select
+              required
                 value={form.tshirtSize}
                 onChange={(e) =>
                   updateField("tshirtSize", e.target.value)
@@ -390,6 +396,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               </select>
 
               <select
+                required
                 value={form.experience}
                 onChange={(e) =>
                   updateField("experience", e.target.value)
@@ -431,6 +438,7 @@ const handleSubmit = async (e: React.FormEvent) => {
             <div className="grid gap-6 md:grid-cols-2">
 
               <input
+              required
                 type="text"
                 placeholder="Emergency Contact Name"
                 value={form.emergencyName}
@@ -441,6 +449,7 @@ const handleSubmit = async (e: React.FormEvent) => {
               />
 
               <input
+              required
                 type="tel"
                 placeholder="Emergency Contact Number"
                 value={form.emergencyPhone}

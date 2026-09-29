@@ -61,6 +61,7 @@ export default function DonorInformation({
             />
 
             <input
+            required
               id="name"
               type="text"
               placeholder="Enter your full name"
