@@ -95,6 +95,7 @@ export default function DonorInformation({
             />
 
             <input
+            required
               id="email"
               type="email"
               placeholder="you@example.com"
@@ -114,6 +115,7 @@ export default function DonorInformation({
         <div>
 
           <label
+
             htmlFor="phone"
             className="mb-2 block font-medium text-slate-800"
           >
@@ -128,6 +130,7 @@ export default function DonorInformation({
             />
 
             <input
+            required
               id="phone"
               type="tel"
               placeholder="+880 1XXXXXXXXX"
